@@ -1,4 +1,4 @@
-# SO100 + LeRobot Guide: Tri-Attribute Decision (SmolVLA / ACT / π0)
+# SO100 + LeRobot Guide: Three Way Decision (SmolVLA / ACT / π0)
 
 > A practical, reproducible guide for using the **LeRobot SO100** robotic arm in a **Three Way Decision** research project, including dataset collection, preprocessing, fine-tuning, training, evaluation, and deployment.  
 
@@ -12,7 +12,7 @@
 
 ## Project Overview
 ### Research Topic
-**Tri-Attribute Decision** for SO100 robotic arm control / decision-making.
+**Three Way Decision** for SO100 robotic arm control / decision-making.
 
 ### Hardware / Stack
 - Robot: **LeRobot SO100**
@@ -33,7 +33,12 @@ so100-lerobot-guide/
   examples/                # minimal examples (optional)
   assets/                  # figures / gifs
   LICENSE
-
----
+```
 
 ## Quick Start
+If you just want to run inference / reproduce training quickly, follow this.
+
+### 1) Setup environment
+```bash
+#create a virtual environment with Python 3.10, using conda:
+

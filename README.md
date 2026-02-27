@@ -35,10 +35,36 @@ so100-lerobot-guide/
   LICENSE
 ```
 
+## Require
+
 ## Quick Start
 If you just want to run inference / reproduce training quickly, follow this.
 
 ### 1) Setup environment
 ```bash
 #create a virtual environment with Python 3.10, using conda:
+conda create -y -n lerobot python=3.10
+```
 
+### 2) Install LeRobot
+```bash
+#step1 clone the repository and navigate into the directory:
+git clone https://github.com/huggingface/lerobot.git
+cd lerobot
+
+#step2 install the library in editable mode:
+pip install -e .
+
+#Optional dependencies
+#Simulations:
+pip install -e ".[aloha]"
+#Motor Control:
+pip install -e ".[feetech]"
+```
+
+### 3) HuggingFace login
+```bash
+huggingface-cli login
+```
+
+### 4) Download models/datasets

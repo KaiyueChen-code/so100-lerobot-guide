@@ -1,6 +1,6 @@
 # SO100 + LeRobot Guide: Tri-Attribute Decision (SmolVLA / ACT / π0)
 
-> A practical, reproducible guide for using the **LeRobot SO100** robotic arm in a **tri-attribute decision** research project, including dataset collection, preprocessing, fine-tuning, training, evaluation, and deployment.  
+> A practical, reproducible guide for using the **LeRobot SO100** robotic arm in a **Three Way Decision** research project, including dataset collection, preprocessing, fine-tuning, training, evaluation, and deployment.  
 
 ## Highlights
 - ✅ End-to-end workflow: **collect → format → train/finetune → evaluate → deploy**
@@ -16,7 +16,7 @@
 
 ### Hardware / Stack
 - Robot: **LeRobot SO100**
-- Sensors: <Top camera / Wrist camera / other>
+- Sensors: <Top camera / Wrist camera>
 - Runtime: <Jetson Orin / PC + GPU / etc.>
 - Framework: **LeRobot**
 - Base models: **SmolVLA**, **ACT**, **π0 (pi0)**

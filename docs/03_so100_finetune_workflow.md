@@ -95,3 +95,17 @@ add:
 ```bash
 --resume=true
 ```
+
+### 3.3 Suggested sampling plan (example)
+
+For a grasping task, it can help to mix:
+
+Success trajectories: search → align → grasp → place
+
+Recovery trajectories: start near failure states (misalignment / near-contact) and demonstrate correction
+
+Example:
+
+60× success episodes
+
+30× recovery episodes

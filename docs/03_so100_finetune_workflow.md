@@ -52,3 +52,18 @@ lerobot-teleoperate \
   --teleop.id=<LEADER_ID> \
   --display_data=true
 ```
+
+Without preview (lighter)
+```bash
+lerobot-teleoperate \
+  --robot.type=so100_follower \
+  --robot.port=/dev/ttyACM0 \
+  --robot.id=<FOLLOWER_ID> \
+  --teleop.type=so100_leader \
+  --teleop.port=/dev/ttyACM1 \
+  --teleop.id=<LEADER_ID> \
+  --display_data=false
+```
+
+## 3) Record dataset (teleop + camera)
+Important: default record fps is 30fps. We strongly recommend NOT changing it, to keep the dataset consistent.

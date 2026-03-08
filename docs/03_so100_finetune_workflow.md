@@ -160,18 +160,46 @@ lerobot-edit-dataset \
   --operation.type merge \
   --operation.repo_ids "['<repo1>', '<repo2>', '<repo3>']"
 ```
-🔴 repo_ids should be <username>/<dataset_name>
+❗ repo_ids should be <username>/<dataset_name>
 
 ## 7) AutoDL training (SmolVLA / ACT / π0)
 ### 7.1 Prepare environment
 ```bash
 conda activate lerobot
 ```
-### 7.2
-### 7.3 Video backend note (important)
-If you see video decode issues, install ```pyav``` and use ```--dataset.video_backend=pyav```.
+### 7.2 Redirect HuggingFace cache (recommended)
+> Establish a symbolic link to store the cache directory of HuggingFace on the data disk instead of the system disk.
+1. Create a target cache directory
 ```bash
-pip install av
+mkdir -p /root/autodl-tmp/hf_cache
 ```
+
+2. Delete the old cache directory
+```bash
+rm -rf /root/.cache/huggingface
+```
+3. Build symbolic link
+```bash
+ln -s /root/autodl-tmp/hf_cache /root/.cache/huggingface
+```
+> Tip: You can use this command to check the symbolic link: ```ls -ld /root/.cache/huggingface```
+> If you see ```/root/.cache/huggingface```->```/root/autodl-tmp/hf_cache```,that is correct.
+### 7.3 Video backend note (important)
+> If you encounter video decode issues while training or running your model (such as corrupted video frames or unsupported video formats), we recommend installing the `pyav` library and specifying `--dataset.video_backend=pyav` in your training or inference command.
+### Steps to fix:
+1. Install `pyav`:
+   ```bash
+   pip install av
+   ```
+2. Use the ```--dataset.video_backend=pyav``` argument in your command:
+   ```bash
+   lerobot-train \
+      --policy.type=smolvla \
+      --dataset.repo_id=<dataset_repo> \
+      --dataset.video_backend=pyav \
+      --batch_size=48 \
+      --steps=20000
+      ...
+   ```
 
 

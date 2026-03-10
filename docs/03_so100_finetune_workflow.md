@@ -201,5 +201,120 @@ ln -s /root/autodl-tmp/hf_cache /root/.cache/huggingface
       --steps=20000
       ...
    ```
+### 7.4 LeRobot compatibility patches (if needed)
+> Only apply if you hit the specific error described in ```docs/10_troubleshooting.md.```
+1. Relax torchvision version constraint：
+```bash
+sed -i 's/torchvision>=0.21.0/torchvision>=0.20.0/g' ~/lerobot/pyproject.toml
+pip install -e . --no-deps
+```
+2. Fix tokenizer missing attributes:
+```bash
+sed -i 's/self.vlm_with_expert.processor.tokenizer.fake_image_token_id/self.vlm_with_expert.processor.tokenizer.convert_tokens_to_ids("<image>")/g' \
+  ~/lerobot/src/lerobot/policies/smolvla/modeling_smolvla.py
+
+sed -i 's/self.vlm_with_expert.processor.tokenizer.global_image_token_id/self.vlm_with_expert.processor.tokenizer.convert_tokens_to_ids("<global_image>")/g' \
+  ~/lerobot/src/lerobot/policies/smolvla/modeling_smolvla.py
+```
+
+## 8) Training commands
+### SmolVLA
+```bash
+lerobot-train \
+  --policy.type=smolvla \
+  --dataset.repo_id=<HF_DATASET_REPO_ID> \
+  --batch_size=48 \
+  --steps=40000 \
+  --save_freq=5000 \
+  --output_dir=/root/autodl-tmp/outputs/train/so100_smolvla \
+  --job_name=so100_smolvla \
+  --policy.device=cuda \
+  --wandb.enable=false \
+  --policy.push_to_hub=false \
+  --dataset.video_backend=pyav
+```
+
+### ACT
+```bash
+lerobot-train \
+  --policy.type=act \
+  --dataset.repo_id=<HF_DATASET_REPO_ID> \
+  --batch_size=8 \
+  --steps=20000 \
+  --save_freq=5000 \
+  --output_dir=/root/autodl-tmp/outputs/train/so100_act \
+  --job_name=so100_act \
+  --policy.device=cuda \
+  --wandb.enable=false \
+  --policy.push_to_hub=false \
+  --dataset.video_backend=pyav
+```
+
+### π0 (pi0)
+```bash
+lerobot-train \
+  --policy.type=pi0 \
+  --dataset.repo_id=<HF_DATASET_REPO_ID> \
+  --batch_size=4 \
+  --steps=40000 \
+  --save_freq=5000 \
+  --output_dir=/root/autodl-tmp/outputs/train/so100_pi0 \
+  --job_name=so100_pi0 \
+  --policy.device=cuda \
+  --wandb.enable=false \
+  --policy.push_to_hub=false \
+  --dataset.video_backend=pyav
+```
+!!!!这里需要补充参数设置
+
+### Resume from checkpoint
+```bash
+--resume=true \
+--config_path=/root/autodl-tmp/outputs/train/<job>/checkpoints/<step>/pretrained_model/train_config.json
+```
+
+## 9) Export & upload trained model to HuggingFace
+Login:
+```bash
+huggingface-cli login
+```
+
+Upload ```pretrained_model``` folder (contains weights + config):
+```bash
+huggingface-cli upload <HF_USERNAME>/<MODEL_REPO_NAME> \
+  /root/autodl-tmp/outputs/train/<job>/checkpoints/<step>/pretrained_model \
+  --repo-type model
+```
+## 10) Deployment / evaluation on robot
+>Recommended before inference:
+```bash
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+```
+Run evaluation-style recording with a policy:
+```bash
+python src/lerobot/scripts/lerobot_record.py \
+  --robot.type=so100_follower \
+  --robot.port=/dev/ttyACM0 \
+  --robot.cameras="{'handeye': {'type':'opencv', 'index_or_path':4, 'width':640, 'height':360, 'fps':30}, 'top': {'type':'opencv', 'index_or_path':0, 'width':640, 'height':360, 'fps':30}}" \
+  --policy.path=<HF_OR_LOCAL_POLICY_PATH> \
+  --dataset.repo_id=<EVAL_DATASET_REPO_ID> \
+  --dataset.single_task="<TASK_PROMPT>" \
+  --dataset.push_to_hub=false \
+  --policy.device=cuda \
+  --policy.use_amp=true \
+  --display_data=false \
+  --dataset.episode_time_s=20 \
+  --dataset.num_episodes=20 \
+  --dataset.reset_time_s=0 \
+  --policy.n_action_steps=12
+```
+If needed:
+```bash
+export HF_ENDPOINT=https://hf-mirror.com
+```
+
+
+
+
 
 

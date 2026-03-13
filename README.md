@@ -17,7 +17,7 @@
 ### Hardware / Stack
 - Robot: **LeRobot SO100**
 - Sensors: <Top camera / Wrist camera>
-- Runtime: PC workstation (x86_64) + NVIDIA GeForce RTX 4060 (8GB)
+- Runtime: PC workstation (x86_64) + NVIDIA GeForce RTX 4060 (16GB)
 - Framework: **LeRobot**
 - Base models: **SmolVLA**, **ACT**, **π0 (pi0)**
 

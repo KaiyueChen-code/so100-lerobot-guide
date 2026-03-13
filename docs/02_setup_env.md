@@ -28,3 +28,17 @@ conda create -y -n lerobot python=3.10
 conda activate lerobot
 ```
 
+## 2) Install LeRobot
+```bash
+git clone https://github.com/huggingface/lerobot.git
+cd lerobot
+pip install -e .
+```
+Optional extras:
+```bash
+# simulations
+pip install -e ".[aloha]"
+# motor control (Feetech)
+pip install -e ".[feetech]"
+```
+

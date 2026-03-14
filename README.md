@@ -39,7 +39,7 @@ so100-lerobot-guide/
 - OS: Ubuntu 22.04.5 LTS (Jammy)
 - Kernel: 6.8.0-94-generic
 - CPU Arch: x86_64
-- GPU: NVIDIA GeForce RTX 4060 (8GB)
+- GPU: NVIDIA GeForce RTX 4060 (16GB)
 - NVIDIA Driver: 575.64.03
 - CUDA (driver/runtime): 12.9 (`nvidia-smi`)
 - Cameras (UVC):
@@ -77,6 +77,18 @@ huggingface-cli login
 ```
 
 ### 4) Download models/datasets
+Large artifacts (datasets / checkpoints) are hosted on HuggingFace:
+
+- Dataset(s):
+  - EricChen06/so100_smolvla
+  - <optional_more_datasets>
+
+- Model checkpoints:
+  - SmolVLA: EricChen06/so100_smolvla
+  - ACT: EricChen06/so100_act
+  - π0: EricChen06/so100_pi0
+🔗Link: https://huggingface.co/EricChen06
+
 ### 5) Teleop quick test (SO100 leader → follower)
 ```bash
 lerobot-teleoperate \
@@ -123,10 +135,10 @@ lerobot-dataset-viz --repo-id <HF_DATASET_REPO_ID> --episode-index 0
 
 ### Next steps
 Full SO100 workflow (teleop/record/upload/train/deploy):
-- [Setup & Environment](docs/02_setup_env.md)
+- [Setup & Environment](docs/01_setup_env.md)
 
 Setup & environment details:
-- [SO100 Fine-tuning Workflow](docs/03_so100_finetune_workflow.md)
+- [SO100 Fine-tuning Workflow](docs/02_so100_finetune_workflow.md)
 
 
 

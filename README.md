@@ -1,4 +1,4 @@
-#Three-Way Decision-SmolVLA Hierarchical Control for Robotic Manipulation
+# Three-Way Decision-SmolVLA Hierarchical Control for Robotic Manipulation
 
 > A practical, reproducible guide for using the **LeRobot SO100** robotic arm in a **Three Way Decision** research project, including dataset collection, preprocessing, fine-tuning, training, evaluation, and deployment.  
 

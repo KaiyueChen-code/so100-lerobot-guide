@@ -55,10 +55,8 @@
 so100-lerobot-guide/
   README.md
   docs/                    # detailed docs
-  scripts/                 # training / eval / utils
   configs/                 # model configs
-  examples/                # minimal examples (optional)
-  assets/                  # figures / gifs
+  Assets/                  # figures / gifs
   LICENSE
 ```
 

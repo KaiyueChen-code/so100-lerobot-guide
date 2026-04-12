@@ -38,10 +38,6 @@
 ---
 
 ## Demo
-<p align="center">
-  <img src="asserts/grasp.gif" alt="Move the obstacle and Grasp the blue cube" width="400"/>
-</p>
-
 | Task 1 | Task 2 |
 |:-----------------:|:-----------------:|
 | <img src="asserts/grasp.gif" width="350"/> | <img src="asserts/grasp2.gif" width="350"/> |

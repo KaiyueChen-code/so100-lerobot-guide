@@ -40,7 +40,7 @@
 ## Demo
 | Task 1 | Task 2 |
 |:-----------------:|:-----------------:|
-| <img src="asserts/grasp2.gif" width="350"/> | <img src="asserts/grasp2.gif" width="350"/> |
+| <img src="asserts/grasp.gif" width="350"/> | <img src="asserts/grasp2.gif" width="350"/> |
 | Move the obstacle and Pick | Decision Pick Left |
 
 ## Overview

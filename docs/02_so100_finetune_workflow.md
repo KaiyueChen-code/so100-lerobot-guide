@@ -265,7 +265,6 @@ lerobot-train \
   --policy.push_to_hub=false \
   --dataset.video_backend=pyav
 ```
-!!!!这里需要补充参数设置
 
 ### Resume from checkpoint
 ```bash

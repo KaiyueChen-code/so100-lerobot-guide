@@ -37,6 +37,12 @@
 
 ---
 
+## Demo
+<p align="center">
+  <img src="docs/assets/、grasp.gif" alt="Move the obstacle and Grasp the blue cube" width="700"/>
+</p>
+<p align="center"><em>Robotic arm executing a multi-step manipulation task</em></p>
+
 ## Overview
 This project proposes a hierarchical Vision-Language-Action (VLA) framework for robotic arms, designed to tackle the core challenges of long-horizon manipulation tasks: error accumulation, tight coupling between planning and execution, high inference latency, and insufficient safety supervision.
 Inspired by the structure of the human nervous system, the architecture is organized into three decoupled modules:

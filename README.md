@@ -45,6 +45,9 @@ Inspired by the structure of the human nervous system, the architecture is organ
 - 🦾 Cerebellum — Low-level action execution. Dedicated VLA/action models (ACT, SmolVLA, Pi0) translate sub-task commands into precise robotic arm motions, handling grasping, transport, and placement.
 - 👁️ Supervisor — Real-time safety monitoring and recovery. A YOLO-based detection module watches for hazards (e.g., human hands entering the workspace) and triggers a pause → observe → confirm → resume loop rather than an abrupt stop, enabling safe and continuous operation in human-robot collaboration settings.
 
+More overview details：
+- [Setup & Environment](docs/00_overview.md)
+
 ### Key Goals
 - Improve task success rate on multi-step, long-horizon manipulation tasks
 - Reduce end-to-end inference latency through local deployment of LLM + VLA models
